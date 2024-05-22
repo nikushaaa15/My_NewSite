@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КОМПЛІМЕНТИ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            font-family: Georgia, Times, 'Times New Roman', serif;
+            font-size: 50px;
+            color: white;
+        }
+        .form_stile {
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        p {
+            margin: 20px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_stile">
+        <script>
+            let complimentes = ["smart", "clever", "nice", "polite", "amazing", "generous", "awesome", "creative", "kind", "genius", "fabulous", "attractive", "hard-working", "gorgeous", "great"];
+            let animals = ["cat", "fox", "bear", "lizard", "dog", "wolf", "goldfish", "snake", "parrot", "elephant", "giraffe", "frog", "monkey", "hamster", "beaver", "crow"];
+            let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+            let number = +prompt("How many compliments do you want?", 100);
+            let usedColors = [];
+
+            for (let i = 1; i <= number; i++) {
+                if (colors.length === 0) {
+                    colors = usedColors;
+                    usedColors = [];
+                }
+
+                let rand1 = Math.floor(Math.random() * complimentes.length);
+                let rand2 = Math.floor(Math.random() * animals.length);
+                let rand3 = Math.floor(Math.random() * colors.length);
+
+                let color = colors[rand3];
+                usedColors.push(color);
+                colors.splice(rand3, 1);
+
+                document.writeln(`<p style="background-color: ${color};"> ${i}) You are so ${complimentes[rand1]} as ${animals[rand2]}</p>`);
+            }
+        </script>
+    </div>
+</body>
+</html>

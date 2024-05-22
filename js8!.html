@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КВАДРАТНЕ РІВНЯННЯ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            font-family: Times, 'Times New Roman', serif;
+            text-align: center;
+            color: rgb(247, 247, 120);
+        }
+
+        .container {
+            margin-top: 100px;
+            color: rgb(247, 247, 120);
+            font-family: Times, 'Times New Roman', serif;
+
+        }
+
+        input[type="text"] {
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 10px 20px;
+            background-color: #004080;
+            border: none;
+            cursor: pointer;
+            color: rgb(247, 247, 120);
+        }
+
+        p {
+            font-family: Times, 'Times New Roman', serif;
+            font-size: 80px;
+            margin: 0;
+            padding: 20px;
+            color: rgb(247, 247, 120);
+        }
+        .container{
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="quadraticForm">
+            <label for="a">A:</label>
+            <input type="text" id="a" name="a"><br>
+            <label for="b">B:</label>
+            <input type="text" id="b" name="b"><br>
+            <label for="c">C:</label>
+            <input type="text" id="c" name="c"><br>
+            <button type="button" onclick="calculate()">Розрахувати</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            let A = parseFloat(document.getElementById("a").value);
+            let B = parseFloat(document.getElementById("b").value);
+            let C = parseFloat(document.getElementById("c").value);
+            let D = B * B - 4 * A * C;
+            let x1 = (-B + Math.sqrt(D)) / (2 * A);
+            let x2 = (-B - Math.sqrt(D)) / (2 * A);
+            let resultDiv = document.getElementById("result");
+
+            if (isNaN(A) || isNaN(B) || isNaN(C)) {
+                resultDiv.innerHTML = "<p>Будь ласка, введіть числові значення для A, B та C.</p>";
+            } else if (D > 0) {
+                resultDiv.innerHTML = "<p>Дискримінант D = " + B + "*" + B + " - 4*" + A + "*" + C + " = " + D + "</p>" +
+                                      "<p>Рівняння має два корені: x<sub>1</sub> = " + x1.toFixed(2) + " і x<sub>2</sub> = " + x2.toFixed(2) + "</p>";
+            } else if (D == 0) {
+                resultDiv.innerHTML = "<p>Дискримінант D = " + B + "*" + B + " - 4*" + A + "*" + C + " = " + D + "</p>" +
+                                      "<p>Рівняння має один корінь: x = " + x1.toFixed(2) + "</p>";
+            } else {
+                resultDiv.innerHTML = "<p>Дискримінант D = " + B + "*" + B + " - 4*" + A + "*" + C + " = " + D + "</p>" +
+                                      "<p>Рівняння не має дійсних коренів.</p>";
+            }
+        }
+    </script>
+</body>
+</html>

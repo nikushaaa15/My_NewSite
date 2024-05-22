@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СТЕПІНЬ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            color: rgb(247, 247, 120);
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .input-container {
+          margin-bottom: 15px;
+        }
+
+        .btn {
+            font-size: 24px;
+            padding: 10px 20px;
+            background-color: #004080;
+            border: none;
+            cursor: pointer;
+            color: rgb(247, 247, 120);
+ }
+
+        input[type="text"] {
+            font-size: 24px;
+            padding: 5px;
+            width: 200px;
+        }
+        .container{
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-container">
+            <label for="x">ВВЕДІТЬ ЗНАЧЕННЯ X:</label>
+            <input type="text" id="x">
+        </div>
+        <div class="input-container">
+            <label for="n">ВВЕДІТЬ ЗНАЧЕННЯ СТЕПЕНІ N ДЛЯ X:</label>
+            <input type="text" id="n">
+        </div>
+        <button class="btn" onclick="calculatePower()">Обчислити</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function grade(x, n) {
+            let power = 1;
+            for (let i = 1; i <= n; i++) {
+                power *= x;
+            }
+            return power;
+        }
+
+        function calculatePower() {
+            let x = parseFloat(document.getElementById("x").value);
+            let n = parseFloat(document.getElementById("n").value);
+            if (isNaN(x) || isNaN(n)) {
+                alert("Будь ласка, введіть коректні значення.");
+            } else {
+                let result = grade(x, n);
+                document.getElementById("result").innerHTML = `<p>Результат: ${result}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

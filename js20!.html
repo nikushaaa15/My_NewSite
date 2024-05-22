@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗНАХОДЖЕННЯ ВВЕДЕНОЇ ЛІТЕРИ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+        }
+
+        p {
+            font-size: 30px;
+            color: lightcoral;
+            background-color: rgb(126, 126, 239);
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .out {
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+        }
+
+        .main_name{
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <p class="main_name">Введіть літеру і Ви дізнаєтесь, під яким номером вона знаходиться в українському алфавіті</p>
+    <div class="content">
+        <input type="text" class="letter">
+        <button onclick="myClick()">НАТИСНІТЬ</button>
+        <div class="out"></div>
+    </div>
+  
+    <script>
+        function myClick() {
+            let letter = document.querySelector(".letter").value.trim().toUpperCase();
+            let arr = ['А', 'Б', 'В', 'Г', 'Ґ', 'Д', 'Е', 'Є', 'Ж', 'З', 'И', 'І', 'Ї', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ю', 'Я'];
+            let output = "";
+
+            let index = arr.indexOf(letter);
+            if (index !== -1) {
+                output = "Літера " + letter + " знаходиться під номером " + (index + 1);
+            } else {
+                output = "Введіть коректну літеру українського алфавіту";
+            }
+
+            document.querySelector(".out").innerHTML = output;
+        }
+    </script>
+</body>
+</html>

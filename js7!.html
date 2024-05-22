@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПОРИ РОКУ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            font-family: "Times New Roman", Times, serif;
+            font-size: 40px;
+            text-align: center;
+            padding-top: 100px;
+            color: rgb(247, 247, 120);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 400px;
+        }
+input[type="number"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+        .btn {
+            width: 80%;
+            padding: 10px;
+            font-size: 24px;
+            color: rgb(247, 247, 120);
+            background-color: #004080;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container{
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Вкажіть ваш місяць народження:</p>
+        <input type="number" id="month" placeholder="Місяць" min="1" max="12" required>
+        <button class="btn" onclick="checkMonth()">Перевірити</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script> 
+        function checkMonth() {
+            let month = parseInt(document.getElementById("month").value);
+            let season;
+
+            switch (month) {
+                case 12:
+                case 1:
+                case 2:
+                    season = "взимку";
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    season = "навесні";
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    season = "влітку";
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    season = "восени";
+                    break;
+                default:
+                    season = "невідомо";
+                    break;
+            }
+
+            if (season !== "невідомо") {
+                document.getElementById("result").innerHTML = `Ви народилися ${season}!`;
+            } else {
+                document.getElementById("result").innerHTML = `Такого місяця не існує!`;
+            }
+        }
+    </script>
+</body>
+</html>

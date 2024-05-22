@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ОЦІНКИ</title>
+    <style>
+        body {
+            font-size: 50px;
+            text-align: center;
+            background-color: rgb(103, 103, 233);
+        }
+        p {
+            font-size: 30px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        input {
+            background-color: rgb(103, 103, 233);
+            color: rgb(247, 247, 120);
+            height: 30px;
+            margin: auto 0;
+        }
+        .form_stile {
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;
+        }
+        .container{
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="form_stile">
+        <p>Вкажіть оцінку від 1 до 12</p>
+        <input type="number" id="schoolMarks" min="1" max="12">
+        <input class="btn" type="button" value="Розрахувати" onclick="calculateLevel()">
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        function calculateLevel() {
+            let schoolMarks = parseInt(document.getElementById("schoolMarks").value);
+            let resultText = "";
+            switch (schoolMarks) {
+                case 1:
+                case 2:
+                case 3:
+                    resultText = 'Ваш рівень знань - ПОЧАТКОВИЙ';
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    resultText = 'Ваш рівень знань - СЕРЕДНІЙ';
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    resultText = 'Ваш рівень знань - ДОСТАТНІЙ';
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                    resultText = 'Ваш рівень знань - ВИСОКИЙ';
+                    break;
+                default:
+                    resultText = 'Ви ввели неправильне значення';
+            }
+            document.getElementById("result").innerHTML = "<p>" + resultText + "</p>";
+        }
+    </script>
+</body>
+</html>

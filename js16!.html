@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПЕРЕВІРКА НА СПАМ</title>
+    <style>
+        body {
+            background-color: rgb(126, 126, 239);
+            color: rgb(247, 247, 120);
+            font-size: 25px;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        .form-container {
+            background-color: rgb(136, 136, 238);
+            color: rgb(247, 247, 120);
+            width: 700px;
+            padding: 50px 5px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+
+            font-size: 25px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            font-size: 25px;
+            padding: 10px;
+            margin: 30px 10px 10px 10px;
+            background-color: #004080;
+            color: rgb(247, 247, 120);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 25px;
+            margin-top: 30px;
+        }
+        .form_stile {
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="form_stile">
+        <form id="spamForm">
+            <label for="userText">Введіть текст:</label>
+            <input type="text" id="userText" name="userText" placeholder="Перевірка на спам">
+            <br>
+            <button type="button" onclick="checkSpam()">Перевірити</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkSpam() {
+            const userText = document.getElementById('userText').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (userText === '') {
+                alert("Будь ласка, введіть текст.");
+                return;
+            }
+
+            const lowerCaseText = userText.toLowerCase();
+            const containsSpam = lowerCaseText.includes("безкоштовно") || lowerCaseText.includes("гарантія")  || lowerCaseText.includes("спам");
+
+
+            if (containsSpam) {
+                resultDiv.innerText = "Ваш текст містить спам";
+            } else {
+                resultDiv.innerText = "Ваш текст не містить спам";
+            }
+        }
+    </script>
+    </body>
+    </html>
+     

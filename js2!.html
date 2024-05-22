@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ОПИТУВАННЯ</title>
+    <style>
+        body {
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Flag_of_Ukraine.jpg/1200px-Flag_of_Ukraine.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            font-family:'Times New Roman', Times, serif;
+            font-size: 40px;
+            text-align: center;
+            padding-top: 100px;
+            color: rgb(247, 247, 120);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            color: rgb(247, 247, 120);
+            background-color: #004080;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>В якому році було ухвалено Акт про проголошення незалежності України?</p>
+        <input type="text" id="freedomOfUa" placeholder="Введіть рік">
+        <button class="btn" onclick="checkAnswer()">Перевірити</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            let freedomOfUa = document.getElementById("freedomOfUa").value;
+
+            if (freedomOfUa === "") {
+                alert("Будь ласка, введіть рік!");
+            } else if (isNaN(freedomOfUa)) {
+                alert("Будь ласка, введіть числове значення!");
+            } else if (freedomOfUa > 1991) {
+                document.getElementById("result").innerHTML = "Та ні, це сталося раніше!";
+            } else if (freedomOfUa < 1991) {
+                document.getElementById("result").innerHTML = "Ні, ця подія відбулася пізніше!";
+            } else if (freedomOfUa == 1991) {
+                document.getElementById("result").innerHTML = "Так, Ваша відповідь правильна!";
+            }
+        }
+    </script>
+</body>
+</html>

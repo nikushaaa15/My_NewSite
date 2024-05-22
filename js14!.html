@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЧИСЛА В ДІАПАЗОНІ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            color: rgb(247, 247, 120);
+            font-size: 25px;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            margin-top: 10%;
+        }
+        input, button {
+            font-size: 25px;
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            background-color: #004080;
+            color: rgb(247, 247, 120);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .container{
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="min">ВВЕДІТЬ МІНІМАЛЬНЕ ЧИСЛО ДІАПАЗОНУ:</label>
+        <input type="text" id="min" placeholder="0">
+        <br>
+        <label for="max">ВВЕДІТЬ МАКСИМАЛЬНЕ ЧИСЛО ДІАПАЗОНУ:</label>
+        <input type="text" id="max" placeholder="100">
+        <br>
+        <button onclick="printRange()">Вивести числа</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function printRange() {
+            let min = parseInt(document.getElementById("min").value);
+            let max = parseInt(document.getElementById("max").value);
+            let resultDiv = document.getElementById("result");
+
+            if (isNaN(min) || isNaN(max)) {
+                alert('Будь ласка, введіть коректні числові значення.');
+                return;
+            }
+
+            if (min > max) {
+                alert('Мінімальне значення повинно бути менше або дорівнювати максимальному.');
+                return;
+            }
+
+            let result = '';
+            for (let count = min; count <= max; count++) {
+                result += count + ' ';
+            }
+
+            resultDiv.innerText = result;
+        }
+    </script>
+</body>
+</html>

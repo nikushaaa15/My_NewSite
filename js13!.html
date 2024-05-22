@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВГАДАЙ ЧИСЛО</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 40px;
+            color: rgb(247, 247, 120);
+        }
+        .form-style {
+            width: 900px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        input, button {
+            font-size: 30px;
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            background-color: #004080;
+            color: rgb(247, 247, 120);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-style">
+        <p id="message">Загадайте число від 1 до 100</p>
+        <div id="inputForms">
+            <input type="text" id="inputNumber" placeholder="Введіть число від 1 до 100">
+            <button onclick="setNumber()">Задати число</button>
+        </div>
+    </div>
+    <script>
+        let numberX;
+        let counter = 0;
+
+        function setNumber() {
+            let numberInput = document.getElementById("inputNumber").value;
+            if (numberInput === "" || isNaN(numberInput) || numberInput < 1 || numberInput > 100) {
+                alert("Будь ласка, введіть коректне число від 1 до 100.");
+                return;
+            }
+
+            numberX = +numberInput;
+            document.getElementById("message").textContent = "Введіть число від 1 до 100";
+            document.getElementById("inputNumber").value = "";
+            document.getElementById("inputNumber").placeholder = "Введіть число";
+            document.querySelector("button").textContent = "Вгадати";
+            document.querySelector("button").setAttribute("onclick", "guessNumber()");
+        }
+
+        function guessNumber() {
+            let numberUser = document.getElementById("inputNumber").value;
+            if (numberUser === "" || isNaN(numberUser) || numberUser < 1 || numberUser > 100) {
+                alert("Будь ласка, введіть коректне число від 1 до 100.");
+                return;
+            }
+
+            counter++;
+
+            if (+numberUser > numberX) {
+                document.getElementById("message").textContent = "Ваше число менше";
+            } else if (+numberUser < numberX) {
+                document.getElementById("message").textContent = "Ваше число більше";
+            } else {
+                document.getElementById("message").textContent = "ВИ ВГАДАЛИ !!! " + numberX + " за спроб: " + counter;
+                document.getElementById("inputNumber").disabled = true;
+                document.querySelector("button").disabled = true;
+            }
+            document.getElementById("inputNumber").value = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНАЛІЗ ЦИФР</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family:'Times New Roman', Times, serif
+        }
+        .container {
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+        h1 {
+            text-align: center;
+            color: rgb(247, 247, 120);
+        }
+        form {
+            color: rgb(247, 247, 120);
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #004080;
+            color: rgb(247, 247, 120);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgb(136, 136, 238);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        #result p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>АНАЛІЗ ЦИФР</h1>
+        <form name="data_form" onsubmit="counter(); return false;">
+            <input type="number" name="numb" placeholder="Введіть число"><br>
+            <button type="submit">Аналізувати</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function counter() {
+            let text = '';
+            let xy = document.forms['data_form'].elements['numb'].value;
+
+            if (isNaN(xy) || xy.trim() === "") {
+                text = "<p>Ви ввели не число!</p>";
+            } else {
+                text += 'У вашому числі ' + xy.length;
+
+                let intxy = parseInt(xy);
+                if (intxy >= 10 && intxy <= 20) {
+                    text += ' цифр';
+                } else {
+                    switch (intxy % 10) {
+                        case 1:
+                            text += ' цифра';
+                            break;
+                        case 2:
+                        case 3:
+                        case 4:
+                            text += ' цифри';
+                            break;
+                        default:
+                            text += ' цифр';
+                            break;
+                    }
+                }
+                text += '<br>';
+
+                let sum = 0;
+                let odd = 0;
+                let even = 0;
+
+                for (let i = 0; i < xy.length; i++) {
+                    let coal = xy.charAt(i);
+                    let digit = parseInt(coal);
+                    sum += digit;
+
+                    if (digit % 2) {
+                        odd++;
+                    } else {
+                        even++;
+                    }
+                }
+                text += 'Сума всіх цифр числа = ' + sum;
+                text += '<br>';
+                text += 'Кількість парних чисел = ' + even + '<br>' + 'Кількість непарних чисел = ' + odd;
+            }
+            document.getElementById('result').innerHTML = text;
+        }
+    </script>
+</body>
+</html>

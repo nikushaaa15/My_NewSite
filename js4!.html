@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БАНК</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            padding-top: 100px;
+            color: rgb(247, 247, 120);
+            font-size: 24px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            color: rgb(247, 247, 120);
+            background-color: #004080;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .container{
+            width: 70%;
+            min-height: 200px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: 0 auto;
+            padding: 50px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Введіть суму для зняття:</p>
+        <input type="text" id="money" placeholder="Сума">
+        <br>
+        <button class="btn" onclick="withdrawMoney()">Зняти гроші</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function withdrawMoney() {
+            let money = parseFloat(document.getElementById("money").value);
+
+            if (isNaN(money) || money <= 0 || money === "") {
+                alert("Будь ласка, введіть коректну суму!");
+            } else if (money < 50 || money > 3000) {
+                alert("На жаль, Ви можете зняти гроші на суму від 50 грн. до 3000 грн.");
+            } else if (money % 50 !== 0) {
+                alert("У банкоматі немає таких купюр!");
+            } else {
+                alert(`Заберіть ваші гроші: ${money} грн`);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВГАДАЙ ГЕРОЯ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            background-image: none;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            color: rgb(247, 247, 120);
+            font-size: 40px;
+            font-family:'Times New Roman', Times, serif;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            color: rgb(247, 247, 120);
+            background-color: #004080;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Як звати головну героїню мультфільму "_____. Лісова пісня"?</p>
+        <input type="text" id="characterName" placeholder="Введіть ім'я героїні">
+        <button class="btn" onclick="checkAnswer()">Перевірити</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            let characterName = document.getElementById("characterName").value.trim();
+
+            if (characterName === "") {
+                alert("Будь ласка, введіть ім'я героїні!");
+            } else if (characterName.toLowerCase() === "мавка") {
+                document.getElementById("result").innerHTML = "Так, це правильна відповідь!";
+                document.body.style.backgroundImage = 'url(https://mavka.ua/uploads/news/2022/05/18/bb4b19b757a3b389aa0124a6a22da449031db653.jpg)';
+            } else {
+                document.getElementById("result").innerHTML = "Ви не знаєте? Її звати Мавка!";
+            }
+        }
+    </script>
+</body>
+</html>

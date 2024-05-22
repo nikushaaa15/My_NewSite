@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФАКТОРІАЛ</title>
+    <style>
+        body {
+            background-color: rgb(103, 103, 233);
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 40px;
+            color: rgb(247, 247, 120);
+        }
+        .form-style {
+          
+            width: 700px;
+            min-height: 100px;
+            color: rgb(247, 247, 120);
+            background-color: rgb(136, 136, 238);
+            margin: auto auto;
+            margin-top: 10%;
+            padding: 50px 5px;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }        
+        input, button {
+            font-size: 30px;
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            background-color: #004080;
+            color: rgb(247, 247, 120);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-style">
+        <label for="number">ВВЕДІТЬ ЧИСЛО:</label>
+        <input type="text" id="number">
+        <br>
+        <button onclick="calculateFactorial()">Знайти факторіал</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateFactorial() {
+            let number = +document.getElementById("number").value;
+            if (isNaN(number) || number < 0) {
+                alert('Будь ласка, введіть коректне додатне число.');
+                return;
+            }
+            let factorialOfNumber = 1;
+            for (let i = 1; i <= number; i++) {
+                factorialOfNumber *= i;
+            }
+            document.getElementById("result").innerText = `ФАКТОРІАЛ ВАШОГО ЧИСЛА: ${factorialOfNumber}`;
+        }
+    </script>
+</body>
+</html>
